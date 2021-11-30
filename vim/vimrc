@@ -1,38 +1,13 @@
-if empty(glob('~/.vim/autoload/plug.vim'))
-  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-endif
+:set number
+:set relativenumber
+:colorscheme slate
+:set cursorline " enable line highlight, then define colors
+:hi CursorLine cterm=NONE ctermbg=darkblue ctermfg=yellow " ctermbg - background color, ctermfg - text color
 
 call plug#begin('~/.vim/plugged')
-
+Plug 'https://github.com/preservim/nerdtree' " NerdTree
+Plug 'https://github.com/vim-airline/vim-airline' " Status bar
 call plug#end()
 
-" color and font
-colorscheme koehler
-set guifont=courier_new:h12
 
-" display config
-set number                      " turn on line number
-set relativenumber              "
-set showtabline=1               " show tab line only if there are two tap pages 
-set guioptions-=r               " hide right-hand scrollbar
-set guioptions-=L               " hide left-hand scrollbar
-set guioptions-=b               " hide bottom-hand scrollbar
-set cursorline                  " 
-set nocursorcolumn              "
-
-"
-syntax on                       " syntax highlighting
-set nowrap                      " not wrap line
-set tabstop=4                   " number of spaces that a <Tab> counts for  
-set scrolloff=5                 "
-set laststatus=2                "
-
-" others
-set ignorecase                  " 
-set incsearch                   " 
-set hlsearch                    " 
-set autoread                    " 
-
-autocmd! BufWritePost $MYVIMRC source $MYVIMRC
+nnoremap <C-n> :NERDTree<CR>
